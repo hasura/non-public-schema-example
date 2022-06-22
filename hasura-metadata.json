@@ -1,0 +1,55 @@
+{
+  "resource_version": 4,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "example",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "schema": "example",
+              "name": "english"
+            },
+            "object_relationships": [
+              {
+                "name": "french",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "id",
+                    "table": {
+                      "schema": "example",
+                      "name": "french"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "schema": "example",
+              "name": "french"
+            },
+            "object_relationships": [
+              {
+                "name": "english",
+                "using": {
+                  "foreign_key_constraint_on": "id"
+                }
+              }
+            ]
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "use_prepared_statements": false,
+            "database_url": "postgres://hasura_user:hasura_user_password@postgres:5432/postgres",
+            "isolation_level": "read-committed"
+          }
+        }
+      }
+    ]
+  }
+}
