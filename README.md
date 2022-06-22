@@ -18,6 +18,8 @@ The Hasura GraphQL engine needs access to your Postgres database(s) with the fol
 - (required only if event triggers are needed) Read, write & create access on schema: hdb_catalog.
 
 ### Files
-- postgres-prerequites.sql: SQL code to be run by DBA or privileged user to create hdb_catalog (for Hasura GraphQL engine metadata) & test schemas and hasura_metadata_user & hasura_user users. Granting required permissions
+- init-pg/00-postgres-prerequites.sql: SQL code to be run by DBA or privileged user to create hdb_catalog (for Hasura GraphQL engine metadata) & example schemas and hasura_metadata_user & hasura_user users. Granting required permissions.
+- init-pg/01-test-example-data.sql: SQL code to be run by DBA or privileged user to create example tables with sample data
+- init-pg/02-postgres-table-privileges.sql: SQL code to be run by DBA or privileged user to grante required permissions on the newly created example tables
 - docker-compose.yaml: Docker Compose file to run the example with a Postgres database to store the metadata and the test schema
 - hasura-metadata: Hasura metadata export that can be re-imported to re-hydrate the Hasura GraphQL engine example. Docs on how to import metadata are [here](https://hasura.io/docs/latest/graphql/core/migrations/manage-metadata/#applying-metadata), just click on the "Console" tab to see detailed step-by-step instructions.
